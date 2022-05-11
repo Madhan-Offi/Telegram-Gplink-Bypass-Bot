@@ -82,6 +82,17 @@ def droplink_bypass(url):
     return res
 
 
+@bot.on_message(
+    filters.command("droplink", prefixes=["/", ".", "?", "-"])
+    & ~filters.private)
+async def droplink(_, message): 
+
+    link = message.command[1]
+
+    dropLink = drop(url=link)
+    
+    await message.reply_text(f"{dropLink}")
+
 
 bot.run()
  
